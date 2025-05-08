@@ -1,0 +1,24 @@
+{
+	"name": "az_sqldb_dbhartia2001_adventureworks",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"server": "dbhartia2001.database.windows.net",
+			"database": "dbtest",
+			"encrypt": "mandatory",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "dhruv1982",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "azureAdfKeyvault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "sqlserverpassword"
+			}
+		}
+	}
+}

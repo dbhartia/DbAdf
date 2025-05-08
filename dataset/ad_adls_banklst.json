@@ -1,0 +1,53 @@
+{
+	"name": "ad_adls_banklst",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "az_adls_DhruvTest1982",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "banklist.csv",
+				"fileSystem": "training"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Bank Name�",
+				"type": "String"
+			},
+			{
+				"name": "City�",
+				"type": "String"
+			},
+			{
+				"name": "State�",
+				"type": "String"
+			},
+			{
+				"name": "Cert�",
+				"type": "String"
+			},
+			{
+				"name": "Acquiring Institution�",
+				"type": "String"
+			},
+			{
+				"name": "Closing Date�",
+				"type": "String"
+			},
+			{
+				"name": "Fund",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

@@ -1,0 +1,21 @@
+{
+	"name": "az_adfls_dynamic_directory",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "az_adls_DhruvTest1982",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "dynamic",
+				"fileSystem": "2025"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

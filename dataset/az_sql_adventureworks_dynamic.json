@@ -1,0 +1,33 @@
+{
+	"name": "az_sql_adventureworks_dynamic",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "az_sqldb_dbhartia2001_adventureworks",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schema": {
+				"type": "string",
+				"defaultValue": "placeholder"
+			},
+			"Tablename": {
+				"type": "string",
+				"defaultValue": "placeholder"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().schema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().Tablename",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

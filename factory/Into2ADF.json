@@ -1,0 +1,9 @@
+{
+	"name": "Into2ADF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7a885459-8d9c-4368-9f47-fbb4df6490fc",
+		"tenantId": "15e99fe4-6ce2-4877-936a-b655d03a05ca"
+	}
+}

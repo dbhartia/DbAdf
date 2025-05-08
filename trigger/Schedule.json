@@ -1,0 +1,41 @@
+{
+	"name": "Schedule",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "CopyPipeline_parameterized",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Week",
+				"interval": 1,
+				"startTime": "2025-04-06T19:35:00",
+				"endTime": "2025-04-10T19:35:00",
+				"timeZone": "Central Standard Time",
+				"schedule": {
+					"minutes": [
+						0
+					],
+					"hours": [
+						20
+					],
+					"weekDays": [
+						"Monday",
+						"Friday",
+						"Tuesday",
+						"Wednesday",
+						"Thursday",
+						"Sunday"
+					]
+				}
+			}
+		}
+	}
+}

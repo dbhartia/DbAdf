@@ -1,0 +1,17 @@
+{
+	"name": "Addressautocreate",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "az_sqldb_dbhartia2001_adventureworks",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Address"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

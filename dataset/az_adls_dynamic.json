@@ -1,0 +1,71 @@
+{
+	"name": "az_adls_dynamic",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "az_adls_DhruvTest1982",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"filename": {
+				"type": "string",
+				"defaultValue": "placeholder"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().filename",
+					"type": "Expression"
+				},
+				"folderPath": "dynamic",
+				"fileSystem": "2025"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "AddressID",
+				"type": "String"
+			},
+			{
+				"name": "AddressLine1",
+				"type": "String"
+			},
+			{
+				"name": "AddressLine2",
+				"type": "String"
+			},
+			{
+				"name": "City",
+				"type": "String"
+			},
+			{
+				"name": "StateProvince",
+				"type": "String"
+			},
+			{
+				"name": "CountryRegion",
+				"type": "String"
+			},
+			{
+				"name": "PostalCode",
+				"type": "String"
+			},
+			{
+				"name": "rowguid",
+				"type": "String"
+			},
+			{
+				"name": "ModifiedDate",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

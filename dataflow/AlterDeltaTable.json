@@ -1,0 +1,71 @@
+{
+	"name": "AlterDeltaTable",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "az_adls_DhruvTest1982",
+						"type": "LinkedServiceReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "az_adls_DhruvTest1982",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "alterRow1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          AddressID as integer,",
+				"          AddressLine1 as string,",
+				"          AddressLine2 as string,",
+				"          City as string,",
+				"          StateProvince as string,",
+				"          CountryRegion as string,",
+				"          PostalCode as string,",
+				"          rowguid as string,",
+				"          ModifiedDate as timestamp",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'delta',",
+				"     versionAsOf: 0,",
+				"     fileSystem: 'delta',",
+				"     folderPath: 'Address') ~> source1",
+				"source1 alterRow(deleteIf(AddressID<100)) ~> alterRow1",
+				"alterRow1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'delta',",
+				"     fileSystem: 'delta',",
+				"     folderPath: 'Address',",
+				"     mergeSchema: false,",
+				"     autoCompact: false,",
+				"     optimizedWrite: true,",
+				"     vacuum: 0,",
+				"     deletable: true,",
+				"     insertable: true,",
+				"     updateable: false,",
+				"     upsertable: false,",
+				"     keys:['AddressID'],",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
+			]
+		}
+	}
+}

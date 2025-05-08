@@ -1,0 +1,20 @@
+{
+	"name": "TransformBanklist",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "ad_adls_banklst",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> ad_adls_banklst",
+					"dataset": {
+						"referenceName": "ad_adls_banklst",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared ad_adls_banklst = let AdfDoc = AzureStorage.DataLakeContents(\"https://dhruvtest1982afg3232.dfs.core.windows.net/training/banklist.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \",\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let Source = #\"ad_adls_banklst\",\r\n  #\"Choose columns\" = Table.SelectColumns(Source, {\"Bank Name�\", \"City�\", \"State�\", \"Closing Date�\"}),\r\n  #\"Inserted Merged Column\" = Table.AddColumn(#\"Choose columns\", \"Merged\", each Text.Combine({[#\"City�\"], \" \", [#\"State�\"]}), type text),\r\n  #\"Renamed columns\" = Table.RenameColumns(#\"Inserted Merged Column\", {{\"Merged\", \"City, State\"}}) in #\"Renamed columns\";\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}
